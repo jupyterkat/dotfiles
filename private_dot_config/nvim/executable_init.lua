@@ -34,7 +34,9 @@ vim.g.neo_tree_remove_legacy_commands = 1
 
 -- Load things
 
-require('impatient')
+if packer_plugins['impatient.nvim'] then 
+	require('impatient')
+end
 require('plugins')
 require('lsp')
 
