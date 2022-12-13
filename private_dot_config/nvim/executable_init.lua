@@ -33,10 +33,8 @@ vim.g.rustfmt_autosave = 1
 vim.g.neo_tree_remove_legacy_commands = 1
 
 -- Load things
-
-if packer_plugins['impatient.nvim'] then 
-	require('impatient')
-end
+-- impatient load is allowed to fail
+pcall(require, 'impatient')
 require('plugins')
 require('lsp')
 
