@@ -1,0 +1,28 @@
+theme = "dracula"
+
+[[block]]
+block = "net"
+format = "{speed_down;K}|{speed_up;K}"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used}/{mem_total}"
+format_swap = ""
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "sound"
+step_width = 3
+
+[[block]]
+block = "time"
+interval = 5
+format = "%a %d/%m/%y %r"
+
+[[block]]
+block = "battery"
+if_command = "test -e /sys/class/power_supply/BAT0"
