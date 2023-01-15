@@ -46,6 +46,7 @@ vim.opt.number = true
 vim.opt.guifont = "ComicCode Nerd Font:h12"
 vim.opt.encoding = "utf-8"
 vim.opt.undofile = true
+vim.opt.fileformat = "unix"
 
 vim.opt.fillchars = "eob:'"
 
