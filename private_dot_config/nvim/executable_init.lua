@@ -84,7 +84,7 @@ hi Normal ctermbg=NONE
 colorscheme monokai
 ]])
 
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamedplus"
 
 -- Bindings
 
