@@ -32,6 +32,8 @@ vim.g.neovide_cursor_antialiasing = false
 vim.g.rustfmt_autosave = 1
 vim.g.neo_tree_remove_legacy_commands = 1
 
+vim.opt.termguicolors = true
+
 -- Load things
 -- impatient load is allowed to fail
 pcall(require, 'impatient')
@@ -41,12 +43,10 @@ require('lsp')
 -- Ui settings
 
 vim.opt.background = "dark"
-vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.guifont = "ComicCode Nerd Font:h12"
 vim.opt.encoding = "utf-8"
 vim.opt.undofile = true
-vim.opt.fileformats = "unix"
 
 vim.opt.fillchars = "eob:'"
 

@@ -1,71 +1,74 @@
 
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
-  use 'lewis6991/impatient.nvim'
+return require('lazy').setup({
+  'lewis6991/impatient.nvim',
   
-  use 'crusoexia/vim-monokai'
+  'crusoexia/vim-monokai',
 
-  use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/lsp_extensions.nvim'
-  use {'hrsh7th/cmp-nvim-lsp', branch = "main"}
-  use {'hrsh7th/cmp-buffer', branch = "main"}
-  use {'hrsh7th/cmp-path', branch = "main"}
-  use {'hrsh7th/nvim-cmp', branch = "main"}
-  use 'ray-x/lsp_signature.nvim'
-  use 'tamago324/nlsp-settings.nvim'
-  use 'folke/lsp-colors.nvim'
+  'neovim/nvim-lspconfig',
+  'nvim-lua/lsp_extensions.nvim',
+  {'hrsh7th/cmp-nvim-lsp', branch = "main"},
+  {'hrsh7th/cmp-buffer', branch = "main"},
+  {'hrsh7th/cmp-path', branch = "main"},
+  {'hrsh7th/nvim-cmp', branch = "main"},
+  'ray-x/lsp_signature.nvim',
+  'tamago324/nlsp-settings.nvim',
+  'folke/lsp-colors.nvim',
 
-  use {'folke/trouble.nvim', config = function() 
+  {'folke/trouble.nvim', config = function() 
     require("trouble").setup {
     --  auto_open = true,
     }
-  end}
+  end},
 
-  use {'folke/which-key.nvim', config = function()
+  {'folke/which-key.nvim', config = function()
     require("which-key").setup()
-  end}
+  end},
 
-  use {'simrat39/rust-tools.nvim', config = function() 
-    require('rust-tools').setup()
-  end}
+  {'simrat39/rust-tools.nvim', config = function() 
+    local rstools = require('rust-tools')
+	rstools.setup()
+	rstools.inlay_hints.enable()
+  end},
 
-  use {
+
+  'rust-lang/rust.vim',
+
+  {
     'saecki/crates.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
 	  require('crates').setup()
 	end,
-  }
+  },
 
-  use 'ziglang/zig.vim'
+  'ziglang/zig.vim',
 
-  use 'mfussenegger/nvim-dap'
-  use {'rcarriga/nvim-dap-ui', config = function() 
+  'mfussenegger/nvim-dap',
+  {'rcarriga/nvim-dap-ui', config = function() 
     require("dapui").setup()
-  end}
+  end},
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
+    build = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+  },
 
-  use 'kyazdani42/nvim-web-devicons'
+  'kyazdani42/nvim-web-devicons',
 
-  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons', config = function()
+  {'akinsho/bufferline.nvim', dependencies = 'kyazdani42/nvim-web-devicons', config = function()
     require("bufferline").setup{
       options = {
         diagnostics = "nvim_lsp",
@@ -74,13 +77,13 @@ return require('packer').startup(function(use)
         },
       }
     }
-  end}
+  end},
 
-  use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+  {"akinsho/toggleterm.nvim", config = function()
     require("toggleterm").setup()
-  end}
+  end},
   
-  use {'nvim-neo-tree/neo-tree.nvim', config = function() 
+  {'nvim-neo-tree/neo-tree.nvim', config = function() 
     require("neo-tree").setup({
       close_if_last_window = true,
       filesystem = {
@@ -95,32 +98,26 @@ return require('packer').startup(function(use)
         position = "right",
       }
     })
-  end}
+  end},
 
-  use 'MunifTanjim/nui.nvim'
+  'MunifTanjim/nui.nvim',
 
-  use 'editorconfig/editorconfig-vim'
+  'editorconfig/editorconfig-vim',
 
-  use 'justinmk/vim-sneak'
+  'nanotee/zoxide.vim',
 
-  use 'nanotee/zoxide.vim'
+  'plasticboy/vim-markdown',
 
-  use 'rust-lang/rust.vim'
-  use 'plasticboy/vim-markdown'
-  use 'edluffy/hologram.nvim'
-
-  use {'petertriho/nvim-scrollbar', config = function()
+  {'petertriho/nvim-scrollbar', config = function()
     require("scrollbar").setup() 
-  end}
+  end},
 
-  use {'windwp/nvim-autopairs', config = function()
+  {'windwp/nvim-autopairs', config = function()
     require("nvim-autopairs").setup() 
-  end}
+  end},
 
-  use 'p00f/nvim-ts-rainbow'
-
-  use 'nvim-lua/plenary.nvim'
-  use {'nvim-telescope/telescope.nvim', config = function()
+  'nvim-lua/plenary.nvim',
+  {'nvim-telescope/telescope.nvim', config = function()
     local tlscope = require('telescope')
     tlscope.setup{
       pickers = {
@@ -146,13 +143,13 @@ return require('packer').startup(function(use)
     tlscope.load_extension('fzf')
     tlscope.load_extension('lazygit')
 	tlscope.load_extension('projects')
-  end}
+  end},
 
-  use {'nvim-telescope/telescope-fzf-native.nvim', 
-    run = 'cmake -S. -Bbuild -DCMAKE_C_COMPILER=clang -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  }
+  {'nvim-telescope/telescope-fzf-native.nvim', 
+    build = 'cmake -S. -Bbuild -DCMAKE_C_COMPILER=clang -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+  },
 
-  use {
+  {
     "ahmedkhalf/project.nvim",
     config = function()
       require("project_nvim").setup {
@@ -163,9 +160,9 @@ return require('packer').startup(function(use)
           update_root = true
         },
     }
-  end}
+  end},
 
-  use {'lewis6991/gitsigns.nvim', config = function()
+  {'lewis6991/gitsigns.nvim', config = function()
     require("gitsigns").setup{
       signs = {
         add = { text = "▎" },
@@ -175,39 +172,41 @@ return require('packer').startup(function(use)
         changedelete = { text = "▎" },
       },
     }
-  end}
+  end},
 
-  use 'tpope/vim-fugitive'
+  'tpope/vim-fugitive',
 
   -- Only because nvim-cmp _requires_ snippets
-  use {'hrsh7th/cmp-vsnip', branch = "main"}
-  use 'hrsh7th/vim-vsnip'
+  {'hrsh7th/cmp-vsnip', branch = "main"},
+  'hrsh7th/vim-vsnip',
 
-  use {'stevearc/stickybuf.nvim', config = function()
+  {'stevearc/stickybuf.nvim', config = function()
     require("stickybuf").setup{
       filetype = {
         trouble = "filetype",
         toggleterm = "filetype",
       },
     }
-  end}
+  end},
 
-  use 'kdheepak/lazygit.nvim'
+  'kdheepak/lazygit.nvim',
 
-  use {'norcalli/nvim-colorizer.lua', config = function()
+  'jose-elias-alvarez/null-ls.nvim',
+
+  {'norcalli/nvim-colorizer.lua', config = function()
     require'colorizer'.setup()
-  end}
+  end},
 
-  use 'j-hui/fidget.nvim'
+  'j-hui/fidget.nvim',
 
-  use {'windwp/nvim-spectre', config = function() 
+  {'windwp/nvim-spectre', config = function() 
     require('spectre').setup({
       color_devicons = true,
       live_update = true,
     })
-  end}
+  end},
 
-  use {'nvim-lualine/lualine.nvim', config = function() 
+  {'nvim-lualine/lualine.nvim', config = function() 
     require('lualine').setup {
       options = { 
         theme = 'powerline',
@@ -224,9 +223,9 @@ return require('packer').startup(function(use)
         },
       },
     }
-  end}
+  end},
 
-  use({
+  {
     "gbprod/cutlass.nvim",
     config = function()
       require("cutlass").setup({
@@ -234,11 +233,6 @@ return require('packer').startup(function(use)
         override_del = true,
       })
     end
-  })
+  },
   
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+})
