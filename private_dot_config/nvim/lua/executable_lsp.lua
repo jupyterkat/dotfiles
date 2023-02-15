@@ -74,7 +74,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 require'fidget'.setup()
 
-
 local dap = require('dap')
 dap.configurations.rust = {
   {

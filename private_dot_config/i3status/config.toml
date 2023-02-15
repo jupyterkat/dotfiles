@@ -1,4 +1,19 @@
-theme = "dracula"
+[theme]
+name = "plain"
+[theme.overrides]
+idle_bg = "#272822"
+idle_fg = "#F8F8F2"
+info_bg = "#A1EFE4"
+info_fg = "#272822"
+good_bg = "#A6E22E"
+good_fg = "#272822"
+warning_bg  = "#AE81FF"
+warning_fg  = "#272822"
+critical_bg = "#F92672"
+critical_fg = "#272822"
+separator = ""
+separator_bg = "#272822"
+separator_fg = "#F8F8F2"
 
 [[block]]
 block = "net"

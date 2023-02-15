@@ -17,7 +17,14 @@ return require('lazy').setup({
   
   'crusoexia/vim-monokai',
 
+  'williamboman/mason.nvim',
+  {'williamboman/mason-lspconfig.nvim', config = function()
+	require("mason-lspconfig").setup {
+		ensure_installed = { "rust_analyzer", "zls"},
+	}
+  end},
   'neovim/nvim-lspconfig',
+
   'nvim-lua/lsp_extensions.nvim',
   {'hrsh7th/cmp-nvim-lsp', branch = "main"},
   {'hrsh7th/cmp-buffer', branch = "main"},
@@ -36,6 +43,7 @@ return require('lazy').setup({
   {'folke/which-key.nvim', config = function()
     require("which-key").setup()
   end},
+
 
   {'simrat39/rust-tools.nvim', config = function() 
     local rstools = require('rust-tools')
@@ -57,9 +65,7 @@ return require('lazy').setup({
   'ziglang/zig.vim',
 
   'mfussenegger/nvim-dap',
-  {'rcarriga/nvim-dap-ui', config = function() 
-    require("dapui").setup()
-  end},
+  'rcarriga/nvim-dap-ui',
 
   {
     'nvim-treesitter/nvim-treesitter',

@@ -62,7 +62,8 @@ vim.opt.printfont = ":h10"
 vim.opt.printencoding = "utf-8"
 vim.opt.printoptions = "paper:letter"
 vim.opt.signcolumn = "yes"
-vim.opt.mouse = "a"
+vim.opt.mouse = "" 
+vim.opt.mousemodel = ""
 vim.opt.scrolloff = 4
 
 -- Tabs
@@ -103,4 +104,6 @@ vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>Telescope buffers<cr>', { norema
 vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>Telescope projects<cr>', { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap('n', '<leader>p', '<cmd>Telescope find_files<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader><Tab>', ':bn<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>q', ':bd<cr>', { noremap = true, silent = true })
 
