@@ -61,13 +61,15 @@ exec --no-startup-id nm-applet
 
 exec --no-startup-id flameshot
 
+exec --no-startup-id blueman-applet
+
 exec_always --no-startup-id picom -b
 
 exec --no-startup-id xset dpms 300 0 0
 
-exec --no-startup-id xset s off
+exec --no-startup-id xset s on
 
-exec --no-startup-id xset s noblank
+exec --no-startup-id xset s 300 0
 
 # Wallpaper
 exec feh --bg-fill ~/.config/wallpaper.png
