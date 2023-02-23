@@ -32,7 +32,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
-local on_attach = function(client, bufnr)
+local on_attach = function()
   -- Get signatures (and _only_ signatures) when in argument lists.
   require "lsp_signature".on_attach({
     doc_lines = 0,
@@ -63,6 +63,19 @@ lspconfig.rust_analyzer.setup {
 lspconfig.clangd.setup{}
 
 lspconfig.cmake.setup{}
+
+lspconfig.lua_ls.setup{
+  settings = {
+    Lua = {
+	  diagnostics = {
+	    globals = {'vim'}
+	  },
+	  workspace = {
+	    library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
+	  }
+	}
+  }
+}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

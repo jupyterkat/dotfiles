@@ -14,15 +14,9 @@ vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
   'lewis6991/impatient.nvim',
-  
+
   'crusoexia/vim-monokai',
 
-  'williamboman/mason.nvim',
-  {'williamboman/mason-lspconfig.nvim', config = function()
-	require("mason-lspconfig").setup {
-		ensure_installed = { "rust_analyzer", "zls"},
-	}
-  end},
   'neovim/nvim-lspconfig',
 
   'nvim-lua/lsp_extensions.nvim',
@@ -34,7 +28,7 @@ return require('lazy').setup({
   'tamago324/nlsp-settings.nvim',
   'folke/lsp-colors.nvim',
 
-  {'folke/trouble.nvim', config = function() 
+  {'folke/trouble.nvim', config = function()
     require("trouble").setup {
     --  auto_open = true,
     }
@@ -45,7 +39,7 @@ return require('lazy').setup({
   end},
 
 
-  {'simrat39/rust-tools.nvim', config = function() 
+  {'simrat39/rust-tools.nvim', config = function()
     local rstools = require('rust-tools')
 	rstools.setup()
 	rstools.inlay_hints.enable()
@@ -88,8 +82,8 @@ return require('lazy').setup({
   {"akinsho/toggleterm.nvim", config = function()
     require("toggleterm").setup()
   end},
-  
-  {'nvim-neo-tree/neo-tree.nvim', config = function() 
+
+  {'nvim-neo-tree/neo-tree.nvim', config = function()
     require("neo-tree").setup({
       close_if_last_window = true,
       filesystem = {
@@ -115,11 +109,11 @@ return require('lazy').setup({
   'plasticboy/vim-markdown',
 
   {'petertriho/nvim-scrollbar', config = function()
-    require("scrollbar").setup() 
+    require("scrollbar").setup()
   end},
 
   {'windwp/nvim-autopairs', config = function()
-    require("nvim-autopairs").setup() 
+    require("nvim-autopairs").setup()
   end},
 
   'nvim-lua/plenary.nvim',
@@ -151,7 +145,7 @@ return require('lazy').setup({
 	tlscope.load_extension('projects')
   end},
 
-  {'nvim-telescope/telescope-fzf-native.nvim', 
+  {'nvim-telescope/telescope-fzf-native.nvim',
     build = 'cmake -S. -Bbuild -DCMAKE_C_COMPILER=clang -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   },
 
@@ -205,16 +199,16 @@ return require('lazy').setup({
 
   'j-hui/fidget.nvim',
 
-  {'windwp/nvim-spectre', config = function() 
+  {'windwp/nvim-spectre', config = function()
     require('spectre').setup({
       color_devicons = true,
       live_update = true,
     })
   end},
 
-  {'nvim-lualine/lualine.nvim', config = function() 
+  {'nvim-lualine/lualine.nvim', config = function()
     require('lualine').setup {
-      options = { 
+      options = {
         theme = 'powerline',
         section_separators = '',
         component_separators = '|',
@@ -223,7 +217,7 @@ return require('lazy').setup({
       sections = {
         lualine_c = {
           {
-            'filename', 
+            'filename',
             path = 1
           }
         },
@@ -240,5 +234,10 @@ return require('lazy').setup({
       })
     end
   },
-  
+},
+-- Lazy options
+{
+  git = {
+    timeout = 1800,
+  },
 })

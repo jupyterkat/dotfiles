@@ -1,5 +1,6 @@
 [theme]
-name = "plain"
+theme = "plain"
+
 [theme.overrides]
 idle_bg = "#272822"
 idle_fg = "#F8F8F2"
@@ -17,13 +18,10 @@ separator_fg = "#F8F8F2"
 
 [[block]]
 block = "net"
-format = "{speed_down;K}|{speed_up;K}"
 
 [[block]]
 block = "memory"
-display_type = "memory"
-format_mem = "{mem_used}/{mem_total}"
-format_swap = ""
+format = " MEM $mem_used.eng(prefix:G)/$mem_total.eng(prefix:G) "
 
 [[block]]
 block = "cpu"
@@ -36,8 +34,10 @@ step_width = 3
 [[block]]
 block = "time"
 interval = 5
-format = "%a %d/%m/%y %r"
+format = " $timestamp.datetime(f:'%a %d/%m/%y %r') "
 
 [[block]]
 block = "battery"
-if_command = "test -e /sys/class/power_supply/BAT0"
+full_format = " FULL "
+empty_format = " EMPTY "
+missing_format = ""
