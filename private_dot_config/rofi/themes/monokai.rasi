@@ -1,38 +1,33 @@
-/******************************************************************************
- * ROFI Color theme
- * User: Rasi
- * Copyright: Rasmus Steinke
- ******************************************************************************/
 * {
-    selected-normal-foreground:  rgba ( 248, 248, 242, 100 % );
-    foreground:                  rgba ( 248, 248, 242, 100 % );
-    normal-foreground:           @foreground;
-    alternate-normal-background: rgba ( 39, 40, 34, 0 % );
-    red:                         rgba ( 220, 50, 47, 100 % );
-    selected-urgent-foreground:  rgba ( 248, 248, 242, 100 % );
-    blue:                        rgba ( 38, 139, 210, 100 % );
-    urgent-foreground:           rgba ( 249, 38, 114, 100 % );
-    alternate-urgent-background: rgba ( 39, 40, 34, 0 % );
-    active-foreground:           rgba ( 166, 226, 42, 100 % );
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    selected-active-foreground:  rgba ( 166, 226, 42, 100 % );
-    alternate-active-background: rgba ( 39, 40, 34, 0 % );
-    background:                  rgba ( 39, 40, 34, 100% );
-    bordercolor:                 rgba ( 0, 43, 54, 100 % );
-    alternate-normal-foreground: @foreground;
-    normal-background:           rgba ( 39, 40, 34, 0 % );
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    selected-normal-background:  rgba ( 20, 20, 17, 100 % );
-    border-color:                @foreground;
+    red:                         #F92772;
+    selected-active-foreground:  var(background);
+    lightfg:                     #212F1C;
+    separatorcolor:              #E6DB74;
+    urgent-foreground:           var(red);
+    alternate-urgent-background: var(lightbg);
+    lightbg:                     #272822;
     spacing:                     2;
-    separatorcolor:              rgba ( 230, 219, 116, 100 % );
-    urgent-background:           rgba ( 39, 40, 34, 0 % );
-    selected-urgent-background:  rgba ( 249, 38, 114, 100 % );
-    alternate-urgent-foreground: @urgent-foreground;
+    border-color:                var(foreground);
+    normal-background:           var(background);
     background-color:            rgba ( 0, 0, 0, 0 % );
-    alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 39, 40, 34, 0 % );
-    selected-active-background:  rgba ( 20, 20, 17, 100 % );
+    alternate-active-background: var(lightbg);
+    active-foreground:           var(blue);
+    blue:                        #A1EFE4;
+    urgent-background:           var(background);
+    alternate-normal-foreground: var(foreground);
+    selected-active-background:  var(blue);
+    background:                  #272822;
+    selected-normal-foreground:  var(lightbg);
+    active-background:           var(background);
+    alternate-active-foreground: var(blue);
+    alternate-normal-background: var(lightbg);
+    foreground:                  #E8E8E3;
+    selected-urgent-background:  var(red);
+    selected-urgent-foreground:  var(background);
+    normal-foreground:           var(foreground);
+    alternate-urgent-foreground: var(red);
+    selected-normal-background:  var(separatorcolor);
+
 }
 window {
     background-color: @background;
