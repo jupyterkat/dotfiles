@@ -44,7 +44,7 @@
 },
 
         "format": "BAT {capacity}%",
-        "format-charging": "BAT CHG {capacity}%",
+        "format-plugged": "BAT CHG {capacity}%",
         "interval": 30
 },
 
