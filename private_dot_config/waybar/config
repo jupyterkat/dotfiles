@@ -1,0 +1,82 @@
+{
+	"layer": "top",	
+	"position": "top",
+    //"height": 20,
+	//"spacing": 10,
+
+
+    "modules-left": ["wlr/workspaces", "hyprland/window"],
+    "modules-center": [],
+    "modules-right": ["network", "cpu", "memory", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray"],
+
+	"cpu": {
+        "format": "CPU {usage}%",
+		"interval": 10,
+		"states": {
+			 "high": 80,
+		     "med": 60,
+		     "low": 30
+		}
+},
+	"memory": {
+        "format": "MEM {used}/{total} GB",
+		"interval": 30
+},
+
+    "tray": {
+        "icon-size": 15,
+},
+
+
+    "clock": {
+        "format": "{:%a %d/%m/%y %r}",
+        "interval": 30
+},
+
+    
+    "battery": {
+		"device": "BAT0",
+        "states": {
+              "full": 95,
+              "good": 80,
+              "warning": 60,
+              "critical": 20
+},
+
+        "format": "BAT {capacity}%",
+        "format-charging": "BAT CHG {capacity}%",
+        "interval": 30
+},
+
+
+    "network": {
+        //"interface": "wlp4s0", 
+        "format": "UP {bandwidthUpBytes} | DOWN {bandwidthDownBytes}",
+        "format-disconnected": "DISCONNECTED",
+        "interval": 15
+},
+
+
+    "temperature": {
+	   	"thermal-zone": 0,
+		"format": "TEMP {temperatureC}°C",
+		"interval": 30
+},
+
+
+	"backlight": {
+    	//"device": "intel_backlight",
+    	"format": "LIGHT {percent}%",
+    	"interval": 60
+},
+
+
+    "pulseaudio": {
+        "format": "VOL {volume}%",
+        "format-bluetooth": "BT {volume}%",
+        "format-muted":"MUTED",
+        "interval": 60,
+		"on-click": "pavucontrol"    
+}
+
+}

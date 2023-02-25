@@ -1,0 +1,130 @@
+* {
+	border: none;
+	border-radius: 5;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	box-shadow: none;
+	text-shadow: none;
+	-gtk-icon-shadow: none;
+    font-family: "ComicCode Nerd Font";
+    font-size: 12px;
+}
+
+window#waybar {
+	background-color: #272822;
+    color: #E8E8E3;    
+}
+
+window#waybar.hidden {
+	opacity: 0;
+}
+
+window#waybar.empty #window {
+	background-color: transparent;
+	color: transparent;
+}
+
+/* left bar*/
+
+#workspaces {
+	padding-right: 5px;
+}
+
+#workspaces button { 
+	color: #E8E8E3;
+}
+
+#workspaces button:hover { 
+	background-color: #A1EFE4;
+	color: #272822;
+}
+
+#workspaces button.active { 
+	background-color: #AE81FF;
+	color: #272822;
+}
+
+#workspaces button.urgent { 
+	background-color: #F92772;
+	color: #272822;
+}
+
+#window {
+	padding: 3px 5px 3px 5px;
+}
+
+/* right bar*/
+
+#network {
+	padding: 0 5px 0 5px;
+}
+
+#network.disconnected {
+   background-color: #F92672;
+   color: #272822;
+}
+
+#cpu {
+	padding: 0 5px 0 5px;
+}
+
+#cpu.high {
+	background-color: #F92772;
+	color: #272822;
+}
+
+#cpu.med {
+	background-color: #FD9720;
+	color: #272822;
+}
+
+#memory {
+	padding: 0 5px 0 5px;
+}
+
+#temperature {
+	padding: 0 5px 0 5px;
+}
+
+#backlight {
+	padding: 0 5px 0 5px;
+}
+
+#pulseaudio {
+	padding: 0 5px 0 5px;
+	background-color: #A1EFE4;
+	color: #272822;
+}
+
+#battery {
+	padding: 0 5px 0 5px;
+}
+
+#battery.critical {
+   background-color: #F92672;
+   color: #272822;
+}
+
+#battery.warning {
+   background-color: #FD9720;
+   color: #272822;
+}
+
+#battery.full {
+   background-color: #A6E22D;
+   color: #272822;
+}
+
+#battery.good {
+   background-color: #A6E22D;
+   color: #272822;
+}
+
+#clock {
+	padding: 0 5px 0 5px;
+}
+
+#tray {
+	padding-left: 5px;
+}
