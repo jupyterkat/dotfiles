@@ -17,13 +17,93 @@ return require('lazy').setup({
 
   'crusoexia/vim-monokai',
 
-  'neovim/nvim-lspconfig',
+  {'neovim/nvim-lspconfig', config = function ()
+	local lspconfig = require'lspconfig'
+
+	-- Setup lspconfig.
+	local on_attach = function()
+	  -- Get signatures (and _only_ signatures) when in argument lists.
+	  require("lsp_signature").on_attach({
+		doc_lines = 0,
+		handler_opts = {
+		  border = "none"
+		},
+	  })
+	end
+
+	local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+	lspconfig.rust_analyzer.setup {
+	  on_attach = on_attach,
+	  flags = {
+		debounce_text_changes = 150,
+	  },
+	  settings = {
+		["rust-analyzer"] = {
+		  completion = {
+			postfix = {
+			  enable = false,
+			},
+		  },
+		},
+	  },
+	  capabilities = capabilities,
+	}
+
+
+	lspconfig.clangd.setup{}
+
+	lspconfig.cmake.setup{}
+
+	lspconfig.lua_ls.setup{
+	  settings = {
+		Lua = {
+		  diagnostics = {
+			globals = {'vim'}
+		  },
+	  workspace = {
+	    library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true}
+		  }
+		}
+	  }
+	}
+  end},
 
   'nvim-lua/lsp_extensions.nvim',
   {'hrsh7th/cmp-nvim-lsp', branch = "main"},
   {'hrsh7th/cmp-buffer', branch = "main"},
   {'hrsh7th/cmp-path', branch = "main"},
-  {'hrsh7th/nvim-cmp', branch = "main"},
+  {'hrsh7th/nvim-cmp', branch = "main", config = function()
+	local cmp = require('cmp')
+	cmp.setup({
+	  snippet = {
+		-- REQUIRED by nvim-cmp. get rid of it once we can
+		expand = function(args)
+		  vim.fn["vsnip#anonymous"](args.body)
+		end,
+	  },
+	  mapping = {
+		-- Enter immediately completes. Tab selects the next item.
+		['<Enter>'] = cmp.mapping.confirm({ select = true }),
+		['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+	  },
+	  sources = cmp.config.sources({
+		-- TODO: currently snippets from lsp end up getting prioritized -- stop that!
+		{ name = 'nvim_lsp' },
+	  }, {
+		{ name = 'path' },
+	  }),
+	  experimental = {
+		ghost_text = true,
+	  },
+	})
+
+	-- Enable completing paths in :
+	cmp.setup.cmdline(':', {
+	  sources = cmp.config.sources({
+		{ name = 'path' }
+	  })
+	})
+  end},
   'ray-x/lsp_signature.nvim',
   'tamago324/nlsp-settings.nvim',
   'folke/lsp-colors.nvim',
@@ -207,9 +287,10 @@ return require('lazy').setup({
   end},
 
   {'nvim-lualine/lualine.nvim', config = function()
+	local monokai = require('lualine-monokai')
     require('lualine').setup {
       options = {
-        theme = 'powerline',
+        theme = monokai,
         section_separators = '',
         component_separators = '|',
         disabled_filetypes = {'Trouble'},

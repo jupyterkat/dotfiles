@@ -11,7 +11,7 @@
 
 	"cpu": {
         "format": "CPU {usage}%",
-		"interval": 10,
+		"interval": 5,
 		"states": {
 			 "high": 80,
 		     "med": 60,
@@ -20,7 +20,7 @@
 },
 	"memory": {
         "format": "MEM {used}/{total} GB",
-		"interval": 30
+		"interval": 15
 },
 
     "tray": {
@@ -44,6 +44,7 @@
 },
 
         "format": "BAT {capacity}%",
+        "format-charging": "BAT CHG {capacity}%",
         "format-plugged": "BAT CHG {capacity}%",
         "interval": 30
 },
@@ -74,7 +75,7 @@
     "pulseaudio": {
         "format": "VOL {volume}%",
         "format-bluetooth": "BT {volume}%",
-        "format-muted":"MUTED",
+        "format-muted": "MUTED",
         "interval": 60,
 		"on-click": "pavucontrol"    
 }
