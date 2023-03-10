@@ -1,13 +1,26 @@
 [core]
     pager = delta
-
+	compression = 9
+	autocrlf = false
+	useBuiltinFSMonitor = false
+	fsmonitor = true
+	packedGitLimit = 512m
+	packedGitWindowSize = 512m
+[http]
+	lowSpeedLimit = 1
+	lowSpeedTime = 1800
+	postBuffer = 2M
+	maxRequests = 25
+[pack]
+	deltaCacheSize = 2047m
+	packSizeLimit = 2047m
+	windowMemory = 2047m
+	compression = 9
 [interactive]
     diffFilter = delta --color-only
-
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-
 [merge]
     conflictstyle = diff3
 [diff]

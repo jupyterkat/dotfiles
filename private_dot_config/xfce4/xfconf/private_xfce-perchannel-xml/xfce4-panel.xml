@@ -61,6 +61,9 @@
     <property name="plugin-6" type="string" value="systray">
       <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
+        <value type="string" value="wi-fi network connection “a5e5” active: a5e5 (65%)"/>
+        <value type="string" value="wi-fi network connection “a5e5” active: a5e5 (63%)"/>
+        <value type="string" value="wi-fi network connection “a5e5” active: a5e5 (83%)"/>
         <value type="string" value="wi-fi network connection “a5e5” active: a5e5 (78%)"/>
         <value type="string" value="wi-fi network connection “a5e5” active: a5e5 (71%)"/>
         <value type="string" value="wi-fi network connection “a5e5” active: a5e5 (73%)"/>
@@ -69,6 +72,7 @@
         <value type="string" value="wi-fi network connection “a5e5” active: a5e5 (80%)"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="discord1"/>
         <value type="string" value="blueman"/>
       </property>
     </property>

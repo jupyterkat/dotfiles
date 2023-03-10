@@ -51,7 +51,7 @@ window#waybar.empty #window {
 }
 
 #window {
-	padding: 3px 5px 3px 5px;
+	padding: 0px 5px 0px 5px;
 }
 
 /* right bar*/
