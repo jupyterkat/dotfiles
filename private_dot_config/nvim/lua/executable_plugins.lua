@@ -260,15 +260,6 @@ return require('lazy').setup({
   {'hrsh7th/cmp-vsnip', branch = "main"},
   'hrsh7th/vim-vsnip',
 
-  {'stevearc/stickybuf.nvim', config = function()
-    require("stickybuf").setup{
-      filetype = {
-        trouble = "filetype",
-        toggleterm = "filetype",
-      },
-    }
-  end},
-
   'kdheepak/lazygit.nvim',
 
   'jose-elias-alvarez/null-ls.nvim',
