@@ -12,8 +12,8 @@ warning_bg  = "#AE81FF"
 warning_fg  = "#272822"
 critical_bg = "#F92672"
 critical_fg = "#272822"
-separator = ""
-separator_bg = "#272822"
+separator = "|"
+separator_bg = "#000000"
 separator_fg = "#F8F8F2"
 
 [[block]]

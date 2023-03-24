@@ -22,8 +22,8 @@ set $yellow-color #F4BF75
 set $purple-color #AE81FF
 set $cyan-color #A1EFE4
 
-gaps inner 3
-gaps outer 3
+gaps inner 4
+gaps outer 0
 
 default_border normal 1
 default_floating_border normal 1
@@ -53,13 +53,11 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork --image ~/.config/i3wallpaper.png 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
-exec --no-startup-id flameshot
 
 exec --no-startup-id blueman-applet
 
@@ -67,7 +65,7 @@ exec_always --no-startup-id picom -b
 
 exec --no-startup-id xset dpms 300 0 0
 
-exec --no-startup-id xset s 300 0
+exec --no-startup-id xset s 120 0
 
 # Wallpaper
 exec feh --bg-fill ~/.config/wallpaper.png
@@ -97,7 +95,7 @@ tiling_drag modifier titlebar
 bindsym $mod+Return exec kitty
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show run
@@ -249,4 +247,4 @@ bar {
 }
 
 # Misc
-bindsym $mod+g exec flameshot gui
+bindsym $mod+g exec gscreenshot -s -c -n
