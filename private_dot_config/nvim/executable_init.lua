@@ -58,9 +58,6 @@ vim.opt.shortmess:append("c")
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.updatetime = 300
 
-vim.opt.printfont = ":h10"
-vim.opt.printencoding = "utf-8"
-vim.opt.printoptions = "paper:letter"
 vim.opt.signcolumn = "yes"
 vim.opt.mouse = "" 
 vim.opt.mousemodel = ""
