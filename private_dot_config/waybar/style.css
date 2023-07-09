@@ -56,6 +56,16 @@ window#waybar.empty #window {
 
 /* right bar*/
 
+
+#idle_inhibitor {
+	padding: 0 5px 0 5px;
+}
+
+#idle_inhibitor.activated {
+	background-color: #AE81FF;
+	color: #272822;
+}
+
 #network {
 	padding: 0 5px 0 5px;
 }
