@@ -104,6 +104,7 @@ return require('lazy').setup({
 	  })
 	})
   end},
+
   'ray-x/lsp_signature.nvim',
   'tamago324/nlsp-settings.nvim',
   'folke/lsp-colors.nvim',
@@ -148,15 +149,18 @@ return require('lazy').setup({
 
   'kyazdani42/nvim-web-devicons',
 
-  {'akinsho/bufferline.nvim', dependencies = 'kyazdani42/nvim-web-devicons', config = function()
-    require("bufferline").setup{
-      options = {
-        diagnostics = "nvim_lsp",
-        indicator = {
-          style = 'underline'
-        },
-      }
-    }
+  {'akinsho/bufferline.nvim',
+	dependencies = 'kyazdani42/nvim-web-devicons',
+	version = "*",
+	config = function()
+	  require("bufferline").setup{
+	    options = {
+		diagnostics = "nvim_lsp",
+		indicator = {
+		  style = 'underline'
+		},
+	  }
+	}
   end},
 
   {"akinsho/toggleterm.nvim", config = function()
@@ -192,8 +196,16 @@ return require('lazy').setup({
     require("scrollbar").setup()
   end},
 
-  {'windwp/nvim-autopairs', config = function()
-    require("nvim-autopairs").setup()
+  {'echasnovski/mini.pairs',
+	version = "*",
+	config = function()
+	  require("mini.pairs").setup()
+  end},
+
+  {'echasnovski/mini.starter',
+	version = "*",
+	config = function()
+	  require("mini.starter").setup()
   end},
 
   'nvim-lua/plenary.nvim',
