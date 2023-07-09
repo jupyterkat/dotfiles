@@ -7,14 +7,14 @@
 
     "modules-left": ["wlr/workspaces", "hyprland/window"],
     "modules-center": [],
-    "modules-right": ["network", "cpu", "memory", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "network", "cpu", "memory", "temperature", "backlight", "pulseaudio", "battery", "clock", "tray"],
 	"wlr/workspaces": {
 		"on-click": "activate",
 		"sort-by-number": true
 },
 	"cpu": {
         "format": "CPU {usage}%",
-		"interval": 5,
+		"interval": 1,
 		"states": {
 			 "high": 80,
 		     "med": 60,
